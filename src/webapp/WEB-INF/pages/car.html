@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>HELLO</h1>
+<a th:href="@{/cars(count=${'1'})}">Показать 1 машину</a>
+<br>
+<a th:href="@{/cars(count=${'2'})}">Показать 2 машины</a>
+<br>
+<a th:href="@{/cars(count=${'3'})}">Показать 3 машины</a>
+<br>
+<a th:href="@{/cars(count=${'4'})}">Показать 4 машины</a>
+<br>
+<a th:href="@{/cars(count=${'5'})}">Показать 5 машин</a>
+<br>
+<div th:each="car : ${cars}">
+    <br>
+    <div th:text="${car.toString()}"></div>
+</div>
+
+
+</body>
+</html>
