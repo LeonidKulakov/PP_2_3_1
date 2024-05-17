@@ -13,7 +13,6 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Repository
-@Transactional(readOnly = true)
 public class UserDaoImpl implements UserDao {
     @PersistenceContext
     private EntityManager entityManager;
@@ -29,19 +28,16 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    @Transactional
     public void add(User user) {
         entityManager.persist(user);
     }
 
     @Override
-    @Transactional
     public void updateUser(User user) {
         entityManager.merge(user);
     }
 
     @Override
-    @Transactional
     public void delete(Long id) {
         User user = find(id);
         entityManager.remove(user);
