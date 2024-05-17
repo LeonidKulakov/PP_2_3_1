@@ -9,7 +9,6 @@ public interface UserService {
 
     void add(String username, Integer age, String city);
 
-
     void updateUser(String username, Integer age, String city, Long id);
 
     void delete(Long id);

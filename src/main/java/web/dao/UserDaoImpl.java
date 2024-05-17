@@ -3,19 +3,17 @@ package web.dao;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 import web.model.User;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.TypedQuery;
-import javax.transaction.Transactional;
 import java.util.List;
-import java.util.Optional;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Repository
-@Transactional
+@Transactional(readOnly = true)
 public class UserDaoImpl implements UserDao {
     @PersistenceContext
     private EntityManager entityManager;
@@ -26,22 +24,24 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public void add(User user) {
-            entityManager.persist(user);
-    }
-    
-
-    @Override
     public User find(Long id) {
         return entityManager.find(User.class, id);
     }
 
     @Override
+    @Transactional
+    public void add(User user) {
+        entityManager.persist(user);
+    }
+
+    @Override
+    @Transactional
     public void updateUser(User user) {
         entityManager.merge(user);
     }
 
     @Override
+    @Transactional
     public void delete(Long id) {
         User user = find(id);
         entityManager.remove(user);

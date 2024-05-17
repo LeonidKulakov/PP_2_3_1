@@ -4,11 +4,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import web.dao.UserDao;
-import web.model.User;
 import web.service.UserService;
 
 @Controller
@@ -39,12 +36,13 @@ public class MainController {
     public String printUpdate() {
         return "update";
     }
+
     @PostMapping(value = "update")
     public String update(@RequestParam("username") String username,
                          @RequestParam("city") String city,
                          @RequestParam("age") Integer age,
-                         @RequestParam("id") Long id){
-        userService.updateUser(username,age,city,id);
+                         @RequestParam("id") Long id) {
+        userService.updateUser(username, age, city, id);
         return "redirect:/test";
     }
 
@@ -52,8 +50,9 @@ public class MainController {
     public String printDelete() {
         return "delete";
     }
+
     @PostMapping(value = "delete")
-    public String delete(@RequestParam("id") Long id){
+    public String delete(@RequestParam("id") Long id) {
         userService.delete(id);
         return "redirect:/test";
     }
