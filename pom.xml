@@ -15,6 +15,7 @@
     </properties>
 
     <dependencies>
+        <!-- *** for WEB start *** -->
         <!-- spring-webmvc -->
         <dependency>
             <groupId>org.springframework</groupId>
@@ -33,15 +34,17 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
-            <version>5.3.14</version>
+            <version>${spring.version}</version>
         </dependency>
+        <!-- *** for WEB end *** -->
+
 
         <!-- *** for db start *** -->
         <!-- orm -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-orm</artifactId>
-            <version>5.3.14</version>
+            <version>${spring.version}</version>
         </dependency>
         <!-- hibernate -->
         <dependency>

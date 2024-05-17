@@ -1,17 +1,16 @@
 package web.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 
 @Entity
 @Getter
 @Setter
+@ToString
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(name = "users")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,9 +20,16 @@ public class User {
     private String username;
 
     @Column(nullable = false)
-    private Byte age;
+    private Integer age;
 
     @Column(nullable = false)
     private String city;
+
+    public User(String username, Integer age, String city) {
+        this.username = username;
+        this.age = age;
+        this.city = city;
+    }
+
 
 }
